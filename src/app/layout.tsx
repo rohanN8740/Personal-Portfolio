@@ -7,21 +7,24 @@ const inter = Inter({
   variable: '--font-body',
   weight: ['400', '500', '600'],
   display: 'swap',
+  fallback: ['system-ui', 'sans-serif'],
 });
 
 const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-display',
-  weight: ['300', '400', '500', '600'],
+  weight: ['400', '600'],
   style: ['normal', 'italic'],
   display: 'swap',
+  fallback: ['Georgia', 'serif'],
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
-  weight: ['400', '500', '600'],
+  weight: ['400', '500'],
   display: 'swap',
+  fallback: ['monospace'],
 });
 
 export const metadata: Metadata = {
