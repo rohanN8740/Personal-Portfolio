@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Lenis from 'lenis';
+import ContactForm from '@/components/ContactForm';
 
 export default function Page() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -518,35 +519,59 @@ export default function Page() {
         {/* CERTIFICATIONS */}
         {/* CONTACT */}
         <footer id="contact">
-          <div className="container">
-            <span className="section-tag reveal">05 · Contact</span>
-            <h2 className="contact-title reveal">Have a project<br />in mind? <em>Let's build it.</em></h2>
-            <div className="contact-actions reveal">
-              <a href="mailto:rohann.developer@gmail.com" className="btn btn-primary">rohann.developer@gmail.com</a>
-              <a href="tel:+918983878718" className="btn btn-ghost">+91 89838 78718</a>
+          <div className="container" style={{ position: 'relative' }}>
+            <div className="contact-section-layout reveal">
+              <div className="contact-info-col">
+                <span className="section-tag">05 · Contact</span>
+                <h2 className="contact-title">Have a project<br />in mind? <em>Let's build it.</em></h2>
+                <p className="contact-subtitle">
+                  Have an upcoming project, architecture query, or want to discuss full-stack & fintech builds? Send a message or drop an email.
+                </p>
+              </div>
+
+              <div className="contact-form-col">
+                <ContactForm />
+              </div>
             </div>
 
-            <div className="contact-grid reveal">
-              <div>
-                <div className="label">Email</div>
-                <a href="mailto:rohann.developer@gmail.com">rohann.developer@gmail.com</a>
+            {/* Footer Navigation & Columns */}
+            <div className="main-footer-grid reveal">
+              <div className="footer-col footer-col-brand">
+                <div className="footer-logo">Rohan Nandavdekar</div>
+                <p className="footer-bio">
+                  Full-stack developer & CS undergrad building fast, thoughtful digital experiences from India, for clients worldwide.
+                </p>
               </div>
-              <div>
-                <div className="label">Phone</div>
-                <a href="tel:+918983878718">+91 89838 78718</a>
+
+              <div className="footer-col">
+                <div className="footer-heading">SITEMAP</div>
+                <ul className="footer-links">
+                  <li><a href="#hero">Home</a></li>
+                  <li><a href="#projects">Work</a></li>
+                  <li><a href="#skills">About</a></li>
+                  <li><a href="#contact">Contact</a></li>
+                </ul>
               </div>
-              <div>
-                <div className="label">GitHub</div>
-                <a href="https://github.com/rohanN8740" target="_blank" rel="noopener noreferrer">github.com/rohanN8740</a>
+
+              <div className="footer-col">
+                <div className="footer-heading">CONNECT</div>
+                <ul className="footer-links">
+                  <li><a href="https://github.com/rohanN8740" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                  <li><a href="https://www.linkedin.com/in/rohan-nandavdekar" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                </ul>
               </div>
-              <div>
-                <div className="label">LinkedIn</div>
-                <a href="https://www.linkedin.com/in/rohan-nandavdekar" target="_blank" rel="noopener noreferrer">linkedin.com/in/rohan-nandavdekar</a>
+
+              <div className="footer-col">
+                <div className="footer-heading">DIRECT</div>
+                <ul className="footer-links">
+                  <li><a href="mailto:rohann.developer@gmail.com">Email me</a></li>
+                  <li><a href="tel:+918983878718">+91 89838 78718</a></li>
+                </ul>
               </div>
             </div>
 
             <div className="foot-bottom">
-              <span>© 2026 Rohan Nandavdekar. Built with intent, line by line.</span>
+              <span>© 2026 Rohan Nandavdekar. All rights reserved.</span>
               <span>Pune, Maharashtra, India</span>
             </div>
           </div>
