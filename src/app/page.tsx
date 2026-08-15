@@ -382,7 +382,7 @@ export default function Page() {
             <div className="section-head reveal" style={{ alignItems: 'flex-start' }}>
               <div>
                 <span className="section-tag">03 · Selected work</span>
-                <h2 className="section-title" style={{ fontSize: 'clamp(36px, 5vw, 58px)', fontWeight: 400, marginTop: '8px' }}>Two builds, end to end.</h2>
+                <h2 className="section-title" style={{ fontSize: 'clamp(36px, 5vw, 58px)', fontWeight: 400, marginTop: '8px' }}>builds, end to end.</h2>
               </div>
               <p className="section-desc-right" style={{
                 maxWidth: '46ch',
