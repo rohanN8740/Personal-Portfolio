@@ -5,7 +5,6 @@ import '../index.css';
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-body',
-  weight: ['400', '500', '600'],
   display: 'swap',
   fallback: ['system-ui', 'sans-serif'],
 });
@@ -13,8 +12,6 @@ const inter = Inter({
 const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-display',
-  weight: ['400', '600'],
-  style: ['normal', 'italic'],
   display: 'swap',
   fallback: ['Georgia', 'serif'],
 });
@@ -22,7 +19,6 @@ const fraunces = Fraunces({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
-  weight: ['400', '500'],
   display: 'swap',
   fallback: ['monospace'],
 });
