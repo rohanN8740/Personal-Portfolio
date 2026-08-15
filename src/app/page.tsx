@@ -379,20 +379,12 @@ export default function Page() {
         {/* PROJECTS */}
         <section id="work">
           <div className="container">
-            <div className="section-head reveal" style={{ alignItems: 'flex-start' }}>
+            <div className="section-head reveal">
               <div>
                 <span className="section-tag">03 · Selected work</span>
-                <h2 className="section-title" style={{ fontSize: 'clamp(36px, 5vw, 58px)', fontWeight: 400, marginTop: '8px' }}>builds, end to end.</h2>
+                <h2 className="section-title">builds, end to end.</h2>
               </div>
-              <p className="section-desc-right" style={{
-                maxWidth: '46ch',
-                fontFamily: 'var(--font-body)',
-                fontSize: '15px',
-                color: 'var(--paper-dim)',
-                lineHeight: 1.6,
-                marginTop: '18px',
-                opacity: 0.85
-              }}>
+              <p className="section-desc-right">
                 Interface through to database.
               </p>
             </div>
@@ -553,20 +545,22 @@ export default function Page() {
                 </ul>
               </div>
 
-              <div className="footer-col">
-                <div className="footer-heading">CONNECT</div>
-                <ul className="footer-links">
-                  <li><a href="https://github.com/rohanN8740" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                  <li><a href="https://www.linkedin.com/in/rohan-nandavdekar" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                </ul>
-              </div>
+              <div className="footer-col-group">
+                <div className="footer-col">
+                  <div className="footer-heading">CONNECT</div>
+                  <ul className="footer-links">
+                    <li><a href="https://github.com/rohanN8740" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/rohan-nandavdekar" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                  </ul>
+                </div>
 
-              <div className="footer-col">
-                <div className="footer-heading">DIRECT</div>
-                <ul className="footer-links">
-                  <li><a href="mailto:rohann.developer@gmail.com">Email me</a></li>
-                  <li><a href="tel:+918983878718">+91 89838 78718</a></li>
-                </ul>
+                <div className="footer-col">
+                  <div className="footer-heading">DIRECT</div>
+                  <ul className="footer-links">
+                    <li><a href="mailto:rohann.developer@gmail.com">Email me</a></li>
+                    <li><a href="tel:+918983878718">+91 89838 78718</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
 
