@@ -231,13 +231,19 @@ export default function Page() {
             <a href="RN_Resume.pdf" download onClick={handleNavLinkClick}>Download CV ↓</a>
           </div>
           <button 
-            className="nav-toggle" 
+            className={`nav-toggle ${mobileOpen ? 'open' : ''}`} 
             id="navToggle" 
             aria-expanded={mobileOpen} 
             aria-controls="navLinks"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
             onClick={toggleMobileNav}
+            suppressHydrationWarning
           >
-            Menu
+            <span className="hamburger-box">
+              <span className="hamburger-line top"></span>
+              <span className="hamburger-line middle"></span>
+              <span className="hamburger-line bottom"></span>
+            </span>
           </button>
           <a 
             href="mailto:rohann.developer@gmail.com?subject=Project%20Collaboration" 
