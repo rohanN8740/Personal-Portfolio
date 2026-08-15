@@ -252,7 +252,7 @@ export default function Page() {
       <main id="main">
 
         {/* HERO */}
-        <section className="hero container" style={{ borderTop: 'none', paddingTop: 0 }}>
+        <section className="hero container" style={{ borderTop: 'none' }}>
           <div className="hero-inner" style={{ position: 'relative', width: '100%', maxWidth: '1120px', margin: '0 auto' }}>
             <span className="eyebrow"><span className="dot"></span>Available for opportunities · Pune, India</span>
             <h1 className="display">Rohan<br />Nandavdekar<br /><em>builds full stack.</em></h1>
