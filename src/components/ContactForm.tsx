@@ -42,26 +42,62 @@ export default function ContactForm() {
     if (!validate()) return;
 
     setStatus('submitting');
+    setErrors({});
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '0e99d951-1e56-418f-9911-fb8b9aa8e827';
 
     try {
-      await fetch('/api/contact', {
+      // Primary: Web3Forms Direct Client Submission (CORS enabled, native browser fetch)
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          subject: `Portfolio Inquiry: ${formData.subject}`,
+          message: formData.message,
+          from_name: formData.name,
+          replyto: formData.email
+        })
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        return;
+      }
+
+      // Fallback: Internal API Route
+      const apiRes = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
+      const apiData = await apiRes.json();
 
-      setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      if (apiRes.ok && apiData.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setErrors({ submit: apiData.message || data.message || 'Failed to send message. Please try again or email directly.' });
+        setStatus('idle');
+      }
     } catch {
-      setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setErrors({ submit: 'Network error. Please check your internet connection or email directly.' });
+      setStatus('idle');
     }
   };
 
   return (
-    <div className="ambient-glow-wrapper" suppressHydrationWarning>
+    <div className="ambient-glow-wrapper">
       <div className="ambient-glow-bg"></div>
-      <div className="contact-glass-card" suppressHydrationWarning>
+      <div className="contact-glass-card">
         {/* Top Header Status & Utility Bar */}
         <div className="glass-card-header">
           <div className="status-badge">
@@ -75,7 +111,6 @@ export default function ContactForm() {
             className={`copy-email-chip ${copied ? 'copied' : ''}`}
             title="Copy email to clipboard"
             aria-label="Copy email to clipboard"
-            suppressHydrationWarning
           >
             {copied ? (
               <>
@@ -110,13 +145,17 @@ export default function ContactForm() {
               type="button"
               className="reset-glass-btn"
               onClick={() => setStatus('idle')}
-              suppressHydrationWarning
             >
               Send Another Message
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} noValidate className="glass-form-body" suppressHydrationWarning>
+          <form onSubmit={handleSubmit} noValidate className="glass-form-body">
+            {errors.submit && (
+              <div className="submit-error-banner" style={{ color: '#ff6b6b', padding: '10px 14px', borderRadius: '8px', background: 'rgba(255, 107, 107, 0.1)', border: '1px solid rgba(255, 107, 107, 0.3)', fontSize: '0.85rem', marginBottom: '16px' }}>
+                ⚠️ {errors.submit}
+              </div>
+            )}
             {/* 2 Column Row: Name & Email */}
             <div className="form-grid-2col">
               <div className="glass-field-group">
@@ -133,7 +172,6 @@ export default function ContactForm() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
-                    suppressHydrationWarning
                   />
                 </div>
                 {errors.name && <span className="field-error-mono">{errors.name}</span>}
@@ -153,7 +191,6 @@ export default function ContactForm() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
-                    suppressHydrationWarning
                   />
                 </div>
                 {errors.email && <span className="field-error-mono">{errors.email}</span>}
@@ -175,7 +212,6 @@ export default function ContactForm() {
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   required
-                  suppressHydrationWarning
                 />
               </div>
               {errors.subject && <span className="field-error-mono">{errors.subject}</span>}
@@ -198,7 +234,6 @@ export default function ContactForm() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   required
-                  suppressHydrationWarning
                 ></textarea>
               </div>
               {errors.message && <span className="field-error-mono">{errors.message}</span>}
@@ -215,7 +250,6 @@ export default function ContactForm() {
                 type="submit"
                 disabled={status === 'submitting'}
                 className="submit-glow-btn"
-                suppressHydrationWarning
               >
                 {status === 'submitting' ? (
                   <>

@@ -546,8 +546,8 @@ export default function Page() {
               <div className="footer-col">
                 <div className="footer-heading">SITEMAP</div>
                 <ul className="footer-links">
-                  <li><a href="#hero">Home</a></li>
-                  <li><a href="#projects">Work</a></li>
+                  <li><a href="#root">Home</a></li>
+                  <li><a href="#work">Work</a></li>
                   <li><a href="#skills">About</a></li>
                   <li><a href="#contact">Contact</a></li>
                 </ul>
